@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Color tokens ──────────────────────────────────────────────── */
+:root {
+  --bg: 250 247 242;          /* cream */
+  --bg-2: 245 242 235;        /* cream-2 */
+  --surface: 255 255 255;     /* card */
+  --surface-2: 248 246 240;   /* slightly tinted */
+  --ink: 15 15 16;            /* near-black text */
+  --ink-2: 38 38 42;
+  --muted: 110 110 118;
+  --line: 17 17 20;           /* used with /alpha for borders */
+  --accent: 92 62 170;        /* plum */
+  --accent-2: 187 160 123;    /* gold */
+}
+
+.dark {
+  --bg: 8 8 11;               /* near-black */
+  --bg-2: 14 14 18;
+  --surface: 18 18 22;        /* card */
+  --surface-2: 24 24 30;
+  --ink: 245 242 235;         /* warm off-white */
+  --ink-2: 215 213 208;
+  --muted: 156 156 166;
+  --line: 255 255 255;
+  --accent: 167 139 250;      /* plum-300 — brighter in dark */
+  --accent-2: 220 198 160;    /* gold-300 — brighter in dark */
+}
+
+html { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+html, body {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+}
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+::selection { background: rgb(var(--accent) / 0.25); color: rgb(var(--ink)); }
+
+/* ── Layout ─────────────────────────────────────────────────────── */
+.section { @apply max-w-7xl mx-auto px-6 lg:px-10; }
+
+/* ── Buttons ────────────────────────────────────────────────────── */
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-medium transition;
+  background: rgb(var(--accent));
+  color: rgb(255 255 255);
+  box-shadow: 0 20px 50px -20px rgb(var(--accent) / 0.55);
+}
+.btn-primary:hover { transform: translateY(-1px); filter: brightness(1.05); }
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-medium transition;
+  border: 1px solid rgb(var(--line) / 0.18);
+  color: rgb(var(--ink));
+}
+.dark .btn-ghost { border-color: rgb(var(--line) / 0.18); }
+.btn-ghost:hover { border-color: rgb(var(--line) / 0.4); }
+
+.btn-gold {
+  @apply inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 font-medium text-ink transition;
+}
+.btn-gold:hover { filter: brightness(1.05); transform: translateY(-1px); }
+
+/* ── Cards ──────────────────────────────────────────────────────── */
+.card {
+  background: rgb(var(--surface));
+  border: 1px solid rgb(var(--line) / 0.10);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px -4px rgb(var(--line) / 0.08);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, border-color .3s;
+}
+.dark .card { border-color: rgb(var(--line) / 0.12); }
+.card:hover { transform: translateY(-3px); box-shadow: 0 24px 64px -20px rgb(var(--accent) / 0.25); border-color: rgb(var(--line) / 0.20); }
+
+.feature-card {
+  @apply card p-7;
+}
+.feature-card:hover {
+  border-color: rgb(var(--accent) / 0.25);
+}
+
+.glass {
+  background: rgb(var(--surface) / 0.6);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgb(var(--line) / 0.08);
+}
+.dark .glass {
+  background: rgb(var(--surface) / 0.55);
+  border-color: rgb(var(--line) / 0.1);
+}
+
+/* ── Type ───────────────────────────────────────────────────────── */
+.eyebrow {
+  @apply uppercase tracking-[0.18em] text-[12px] font-semibold;
+  color: rgb(var(--accent));
+}
+
+.headline {
+  font-family: 'Fraunces', 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.headline-xl {
+  font-size: clamp(2.75rem, 6.5vw, 6rem);
+}
+
+.serif-italic {
+  font-family: 'Fraunces', 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── Utility ────────────────────────────────────────────────────── */
+.divider-line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgb(var(--line) / 0.18), transparent);
+}
+
+.shimmer {
+  background: linear-gradient(110deg, transparent 30%, rgb(var(--accent-2) / 0.25) 50%, transparent 70%);
+  background-size: 200% 100%;
+  @apply animate-shimmer;
+}
+
+/* Reveal-on-scroll (driven by Reveal.tsx adding [data-revealed]) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+}
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .animate-float, .animate-shimmer { animation: none !important; }
+}
