@@ -18,7 +18,7 @@ export default function Testimonial() {
               </span>
               <div className="text-left">
                 <div className="font-medium text-ink">Mira Lakhani</div>
-                <div className="text-muted">Owner · Lakhani Jewellers, Mumbai</div>
+                <div className="text-muted">Owner · Lakhani Jewelers, Mumbai</div>
               </div>
             </figcaption>
           </figure>

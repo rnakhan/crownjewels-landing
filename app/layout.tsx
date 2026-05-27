@@ -2,9 +2,18 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Crown Jewels — Where craft meets intelligence",
+  title: "Crown Jewels — AI-Native Jewelry Store Operating System",
   description:
-    "The AI-native operating system for jewellers. Sketches custom designs, messages customers, watches inventory, surfaces what matters — so you stay on the bench.",
+    "The AI-native operating system for independent jewelry stores. Manage custom orders, repair intake, gold price tracking, layaway, and clienteling CRM with intelligent AI design sketching.",
+  keywords: "jewelry store software, jeweler POS, jewelry inventory management, custom jewelry design AI, jeweler CRM, repair intake software, gold price tracker",
+  icons: {
+    icon: "/crown_favicon.svg",
+  },
+  openGraph: {
+    title: "Crown Jewels — AI-Native Jewelry Store Operating System",
+    description: "The AI-native operating system for jewelry stores. Manage inventory, clienteling, custom AI designs, and repair workflows on a unified screen.",
+    type: "website",
+  }
 };
 
 const themeBootstrap = `

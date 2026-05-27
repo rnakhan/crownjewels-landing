@@ -54,7 +54,7 @@ export default function AIDesignSpotlight() {
             The Jewelry Design Generator turns a customer's words into renderings while they're still at the counter. Save to the customer's profile, push a quote with live metal pricing, send the design to WhatsApp — done before they finish their coffee.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#demo" className="btn-gold">See it in action</a>
+            <a href="/book-demo" className="btn-gold">See it in action</a>
             <a href="https://crownjewels-staging.web.app/login" className="rounded-full border border-white/20 px-6 py-3 hover:bg-white/10 transition text-white">Try a demo store</a>
           </div>
         </Reveal>

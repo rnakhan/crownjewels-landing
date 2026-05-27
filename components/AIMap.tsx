@@ -3,9 +3,9 @@ import Reveal from "./Reveal";
 
 const items = [
   { Icon: PenIcon, name: "AI sketches", body: "The Jewelry Design Generator turns plain-English requests into rendered concepts your customer can react to in real time." },
-  { Icon: ChatIcon, name: "AI writes", body: "Drafts WhatsApp wishes, festival promotions, and customer follow-ups in your tone — ready to send in one tap." },
+  { Icon: ChatIcon, name: "AI writes", body: "Drafts WhatsApp wishes, holiday promotions, and customer follow-ups in your tone — ready to send in one tap." },
   { Icon: BellIcon, name: "AI watches", body: "Tracks SKU thresholds, overdue repairs, customer birthdays, and metal-price moves. Surfaces only what needs you." },
-  { Icon: BotIcon, name: "AI assists", body: "Jeweller Chat answers questions about your inventory, sales, and customers. Ask in English. Get the number." },
+  { Icon: BotIcon, name: "AI assists", body: "Jeweler Chat answers questions about your inventory, sales, and customers. Ask in English. Get the number." },
 ];
 
 export default function AIMap() {
@@ -20,7 +20,7 @@ export default function AIMap() {
               <span className="serif-italic text-accent">AI fabric.</span>
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed max-w-2xl">
-              Crown Jewels was built around AI from day one — not bolted on. It shows up everywhere a jeweller needs it, and stays out of the way everywhere they don't.
+              Crown Jewels was built around AI from day one — not bolted on. It shows up everywhere a jeweler needs it, and stays out of the way everywhere they don't.
             </p>
           </div>
         </Reveal>

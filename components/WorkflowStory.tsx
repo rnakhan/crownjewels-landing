@@ -15,7 +15,7 @@ export default function WorkflowStory() {
           <div className="max-w-2xl">
             <span className="eyebrow">A day at the counter</span>
             <h2 className="mt-3 headline">
-              Designed for the <span className="serif-italic">jeweller's day</span>.
+              Designed for the <span className="serif-italic">jeweler's day</span>.
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed">
               Every "Attention Needed" card on your dashboard is something your old POS would have let slip.

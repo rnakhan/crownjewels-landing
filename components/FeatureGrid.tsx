@@ -2,12 +2,12 @@ import { GemIcon, TrendIcon, InventoryIcon, WrenchIcon, HeartIcon, ChatIcon } fr
 import Reveal from "./Reveal";
 
 const features = [
-  { Icon: GemIcon, title: "AI Jewelry Design Generator", body: "Sketch a custom piece in seconds. Generate, refine, save — then quote the customer on the spot." },
-  { Icon: TrendIcon, title: "Live Metal Prices", body: "Gold, silver and platinum rates updated continuously, baked into every quote, repair and custom order." },
-  { Icon: InventoryIcon, title: "Smart Inventory & SKU Alerts", body: "Search, lookup and add inventory. Get pinged the moment a SKU dips below your threshold." },
-  { Icon: WrenchIcon, title: "Repair Intake & Tracking", body: "Capture intake notes, track status, and surface overdue repairs before customers walk back in." },
-  { Icon: HeartIcon, title: "Customer CRM", body: "Layaway, appraisals, pending payments — plus AI-drafted birthday and anniversary wishes." },
-  { Icon: ChatIcon, title: "WhatsApp & Jeweller Chat", body: "Reach customers on WhatsApp and chat with your team — without leaving the platform." },
+  { Icon: GemIcon, title: "AI Jewelry Design Generator", body: "Draft custom rings and concepts at the counter in under 5 seconds. Save designs directly to customer profiles for future reference and manufacturing." },
+  { Icon: TrendIcon, title: "Precious Metal Price Sync", body: "Gold, silver, and platinum rates update continuously. Spot prices automatically calculate margins for repairs, appraisals, and order quotes." },
+  { Icon: InventoryIcon, title: "Smart Inventory & POS", body: "Quick barcode or SKU lookup. Process split Stripe payments, issue gift receipts, log manual store credit adjustments, and track layaway installments." },
+  { Icon: WrenchIcon, title: "Repair & Appraisal Intake", body: "Capture repair details with upfront deposit options, print official PDF repair quote certificates, and upload appraisal images directly via mobile camera." },
+  { Icon: HeartIcon, title: "CRM & Customer Engagement", body: "Search clients by loyalty tiers and store demographics. Generate SMS QR codes for immediate customer messaging and draft custom holiday greetings." },
+  { Icon: ChatIcon, title: "WhatsApp & Jeweler Chat", body: "Message suppliers and sync order history automatically. Leverage three-mode AI Chat (How Do I, General Jewelry, and Repair inventory lookup)." },
 ];
 
 export default function FeatureGrid() {
@@ -18,7 +18,7 @@ export default function FeatureGrid() {
           <div className="max-w-3xl">
             <span className="eyebrow">Everything in one place</span>
             <h2 className="mt-3 headline">
-              One platform. Every part of the <span className="serif-italic">jeweller's day</span>.
+              One platform. Every part of the <span className="serif-italic">jeweler's day</span>.
             </h2>
             <p className="mt-5 text-ink/80 text-lg leading-relaxed">
               Stop juggling four tools. Crown Jewels gives you the operational backbone — and a few moves your competitors can't match.

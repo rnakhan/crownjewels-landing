@@ -16,7 +16,7 @@ export default function FinalCTA() {
                 We'll walk through Crown Jewels with your team, set up a sandbox with your inventory, and have you trading in under a week.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="mailto:hello@crownjewels.app?subject=Crown%20Jewels%20Demo" className="btn-gold">Book a Demo</a>
+                <a href="/book-demo" className="btn-gold">Book a Demo</a>
                 <a href="https://crownjewels-staging.web.app/login" className="rounded-full border border-white/30 px-6 py-3 hover:bg-white/10 transition text-white">Sign in to your store</a>
               </div>
             </div>
