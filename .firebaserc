@@ -1,11 +1,11 @@
 {
   "projects": {
-    "default": "crownjewels-cli"
+    "default": "crownjewels2"
   },
   "targets": {
-    "crownjewels-cli": {
+    "crownjewels2": {
       "hosting": {
-        "landing": ["crownjewels-landing"]
+        "landing": ["crown-jewels-landing"]
       }
     }
   }

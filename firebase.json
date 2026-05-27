@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "crownjewels-landing",
+    "site": "crown-jewels-landing",
     "public": "out",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "cleanUrls": true,
