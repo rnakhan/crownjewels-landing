@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import FirebaseAuthProvider from "@/components/FirebaseAuthProvider";
 
 export const metadata: Metadata = {
   title: "Crown Jewels — AI-Native Jewelry Store Operating System",
@@ -32,7 +33,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
       </head>
-      <body className="font-sans antialiased bg-bg text-ink">{children}</body>
+      <body className="font-sans antialiased bg-bg text-ink">
+        <FirebaseAuthProvider>
+          {children}
+        </FirebaseAuthProvider>
+      </body>
     </html>
   );
 }

@@ -1,5 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAnalytics, isSupported } from "firebase/analytics";
+import { getAuth } from "firebase/auth";
+import { getFunctions } from "firebase/functions";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCsXzqusEKw1JVktR0W3Ps2eDH_OOaEcAs",
@@ -14,6 +16,10 @@ const firebaseConfig = {
 
 // Initialize Firebase (safeguarding against multiple initializations in SSR)
 const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+
+// Export auth and functions instances
+export const auth = getAuth(app);
+export const functions = getFunctions(app, "us-central1");
 
 // Initialize Analytics conditionally as it only runs in browser environments
 export const initAnalytics = async () => {

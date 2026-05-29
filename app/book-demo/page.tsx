@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { httpsCallable } from "firebase/functions";
+import { functions } from "@/app/firebase";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -13,6 +15,7 @@ export default function BookDemoPage() {
   const [step, setStep] = useState<Step>(1);
   const [submitting, setSubmitting] = useState(false);
   const [loadingText, setLoadingText] = useState("Securing tech advisor calendar...");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -39,25 +42,36 @@ export default function BookDemoPage() {
     setStep((prev) => (prev - 1) as Step);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    setErrorMessage("");
 
-    const phases = [
-      "Analyzing store demographics...",
-      "Syncing with New York office calendar...",
-      "Generating strategic Jeweler AI agent sandbox...",
-      "Showroom ready! Redirecting...",
-    ];
+    try {
+      const submitDemo = httpsCallable(functions, "submitDemoRequest");
+      await submitDemo(formData);
 
-    phases.forEach((text, i) => {
-      setTimeout(() => {
-        setLoadingText(text);
-        if (i === phases.length - 1) {
-          router.push("/book-demo/success");
-        }
-      }, (i + 1) * 900);
-    });
+      // Trigger phase animations on successful API call
+      const phases = [
+        "Analyzing store demographics...",
+        "Syncing with New York office calendar...",
+        "Generating strategic Jeweler AI agent sandbox...",
+        "Showroom ready! Redirecting...",
+      ];
+
+      phases.forEach((text, i) => {
+        setTimeout(() => {
+          setLoadingText(text);
+          if (i === phases.length - 1) {
+            router.push("/book-demo/success");
+          }
+        }, (i + 1) * 900);
+      });
+    } catch (error: any) {
+      console.error("Demo submission failed", error);
+      setSubmitting(false);
+      setErrorMessage(error.message || "Failed to submit demo request. Please verify details and try again.");
+    }
   };
 
   const isStep1Valid = formData.name && formData.storeName && formData.email && formData.phone;
@@ -114,6 +128,11 @@ export default function BookDemoPage() {
             <Reveal>
               <div className="card p-8 bg-surface">
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {errorMessage && (
+                    <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-semibold">
+                      {errorMessage}
+                    </div>
+                  )}
                   {/* STEP 1 */}
                   {step === 1 && (
                     <div className="space-y-5 animate-fade-up">

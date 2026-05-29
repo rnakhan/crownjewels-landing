@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { httpsCallable } from "firebase/functions";
+import { functions } from "@/app/firebase";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -13,17 +15,25 @@ export default function ContactPage() {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setStatus("submitting");
-    // Simulate API call
-    setTimeout(() => {
+    setErrorMessage("");
+
+    try {
+      const submitContact = httpsCallable(functions, "submitContactForm");
+      await submitContact(formData);
       setStatus("success");
       setFormData({ name: "", email: "", subject: "General Inquiry", message: "" });
-    }, 1500);
+    } catch (error: any) {
+      console.error("Submission failed", error);
+      setStatus("error");
+      setErrorMessage(error.message || "Failed to submit message. Please try again.");
+    }
   };
 
   return (
@@ -126,6 +136,12 @@ export default function ContactPage() {
                       <h2 className="text-xl font-display font-medium text-ink">Direct Inquiry</h2>
                       <p className="text-xs text-muted mt-1">Please provide your details below.</p>
                     </div>
+
+                    {status === "error" && (
+                      <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-semibold">
+                        {errorMessage}
+                      </div>
+                    )}
 
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
