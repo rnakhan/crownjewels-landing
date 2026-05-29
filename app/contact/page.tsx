@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { httpsCallable } from "firebase/functions";
 import { functions } from "@/app/firebase";
+import { useFirebaseAuth } from "@/components/FirebaseAuthProvider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 
 export default function ContactPage() {
+  const { user, loading } = useFirebaseAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,6 +25,18 @@ export default function ContactPage() {
 
     setStatus("submitting");
     setErrorMessage("");
+
+    if (loading) {
+      setStatus("error");
+      setErrorMessage("Authenticating secure session. Please try again in a moment.");
+      return;
+    }
+
+    if (!user) {
+      setStatus("error");
+      setErrorMessage("Anonymous authentication failed. Please ensure the 'Anonymous' sign-in provider is enabled in the Firebase Console (Authentication > Sign-in method).");
+      return;
+    }
 
     try {
       const submitContact = httpsCallable(functions, "submitContactForm");

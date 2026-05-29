@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { httpsCallable } from "firebase/functions";
 import { functions } from "@/app/firebase";
+import { useFirebaseAuth } from "@/components/FirebaseAuthProvider";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -12,6 +13,7 @@ type Step = 1 | 2 | 3;
 
 export default function BookDemoPage() {
   const router = useRouter();
+  const { user, loading } = useFirebaseAuth();
   const [step, setStep] = useState<Step>(1);
   const [submitting, setSubmitting] = useState(false);
   const [loadingText, setLoadingText] = useState("Securing tech advisor calendar...");
@@ -46,6 +48,18 @@ export default function BookDemoPage() {
     e.preventDefault();
     setSubmitting(true);
     setErrorMessage("");
+
+    if (loading) {
+      setSubmitting(false);
+      setErrorMessage("Authenticating secure session. Please try again in a moment.");
+      return;
+    }
+
+    if (!user) {
+      setSubmitting(false);
+      setErrorMessage("Anonymous authentication failed. Please ensure the 'Anonymous' sign-in provider is enabled in the Firebase Console (Authentication > Sign-in method).");
+      return;
+    }
 
     try {
       const submitDemo = httpsCallable(functions, "submitDemoRequest");
