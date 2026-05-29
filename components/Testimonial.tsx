@@ -1,6 +1,8 @@
 import Reveal from "./Reveal";
 
 export default function Testimonial() {
+  return null;
+  /*
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       <div className="section">
@@ -26,4 +28,5 @@ export default function Testimonial() {
       </div>
     </section>
   );
+  */
 }

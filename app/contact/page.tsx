@@ -53,7 +53,7 @@ export default function ContactPage() {
                 Let's talk <span className="serif-italic text-accent">craft</span> and system.
               </h1>
               <p className="mt-6 text-ink/75 leading-relaxed text-base">
-                Whether you're a luxury retailer with a single Madison Ave boutique, or manage a regional multi-store brand, our advisors are here to help modernize your day-to-day.
+                Whether you're an independent jeweler with a single boutique, or manage a regional multi-store brand, our advisors are here to help modernize your day-to-day.
               </p>
             </Reveal>
 
@@ -62,7 +62,7 @@ export default function ContactPage() {
                 {
                   title: "Headquarters",
                   detail: "FOURFOLD LLC",
-                  detail2: "790 Madison Ave, New York, NY 10021",
+                  detail2: "2108 N ST, Sacramento, CA, 95816",
                   icon: (
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
@@ -71,18 +71,8 @@ export default function ContactPage() {
                   ),
                 },
                 {
-                  title: "Direct Phone",
-                  detail: "+1 (212) 555-0190",
-                  detail2: "Mon–Fri, 9am–6pm EST",
-                  icon: (
-                    <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  ),
-                },
-                {
                   title: "Electronic Mail",
-                  detail: "hello@fourfold.llc",
+                  detail: "contact@fourfoldllc.com",
                   detail2: "Support & Partnerships",
                   icon: (
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
