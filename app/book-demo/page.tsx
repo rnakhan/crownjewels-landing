@@ -13,7 +13,7 @@ type Step = 1 | 2 | 3;
 
 export default function BookDemoPage() {
   const router = useRouter();
-  const { user, loading } = useFirebaseAuth();
+  const { user, loading, error: authError } = useFirebaseAuth();
   const [step, setStep] = useState<Step>(1);
   const [submitting, setSubmitting] = useState(false);
   const [loadingText, setLoadingText] = useState("Securing tech advisor calendar...");
@@ -57,7 +57,8 @@ export default function BookDemoPage() {
 
     if (!user) {
       setSubmitting(false);
-      setErrorMessage("Anonymous authentication failed. Please ensure the 'Anonymous' sign-in provider is enabled in the Firebase Console (Authentication > Sign-in method).");
+      const details = authError ? ` (${authError.code || authError.message})` : "";
+      setErrorMessage(`Anonymous authentication failed. Please ensure the 'Anonymous' sign-in provider is enabled in the Firebase Console (Authentication > Sign-in method).${details}`);
       return;
     }
 

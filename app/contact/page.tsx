@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 
 export default function ContactPage() {
-  const { user, loading } = useFirebaseAuth();
+  const { user, loading, error: authError } = useFirebaseAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,7 +34,8 @@ export default function ContactPage() {
 
     if (!user) {
       setStatus("error");
-      setErrorMessage("Anonymous authentication failed. Please ensure the 'Anonymous' sign-in provider is enabled in the Firebase Console (Authentication > Sign-in method).");
+      const details = authError ? ` (${authError.code || authError.message})` : "";
+      setErrorMessage(`Anonymous authentication failed. Please ensure the 'Anonymous' sign-in provider is enabled in the Firebase Console (Authentication > Sign-in method).${details}`);
       return;
     }
 
